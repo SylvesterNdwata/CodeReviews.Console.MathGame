@@ -1,4 +1,5 @@
-﻿
+﻿using System.Diagnostics;
+
 Console.WriteLine("Welcome to the Math Game.");
 Console.WriteLine("How many questions would you like to answer?");
 var readResult = Console.ReadLine();
@@ -16,6 +17,8 @@ var points = 0;
 Random rand = new Random();
 
 List<string> completedQuestions = new();
+
+Stopwatch sw = Stopwatch.StartNew();
 
 
 for (int i = 0; i <= questionNumber; i++)
@@ -74,6 +77,9 @@ foreach (string qn in completedQuestions)
 {
     Console.WriteLine(qn);
 }
+
+sw.Stop();
+Console.WriteLine($"You took {sw.Elapsed.TotalMinutes} minutes to finish the game");
 
 void Game(Func<int, int, int> operation, string opSign)
 {
