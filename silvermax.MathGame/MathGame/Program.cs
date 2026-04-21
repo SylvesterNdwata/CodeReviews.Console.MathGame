@@ -19,8 +19,6 @@ Random rand = new Random();
 List<string> correctQuestions = new();
 List<string> wrongQuestions = new();
 
-//Stopwatch sw = Stopwatch.StartNew();
-
 bool gameContinue = true;
 
 while (gameContinue)
@@ -67,7 +65,7 @@ while (gameContinue)
                 break;
 
             case "6":
-                printQuestionHistory();
+                PrintQuestionHistory();
                 Console.WriteLine("\nPress Enter to continue...");
                 Console.ReadLine();
                 Console.Clear();
@@ -84,20 +82,11 @@ while (gameContinue)
     }
 }
 
-//Console.WriteLine("Here are the questions you answered:");
-//foreach (string qn in completedQuestions)
-//{
-//    Console.WriteLine(qn);
-//}
-
-//sw.Stop();
-//Console.WriteLine($"You took {sw.Elapsed.TotalMinutes} minutes to finish the game");
-
 void Game(Func<int, int, int> operation, string opSign, int repitition)
 {
     Stopwatch sw = Stopwatch.StartNew();
 
-    for (int i = 0; i <= repitition + 1; i++)
+    for (int i = 0; i < repitition; i++)
     {
         var num1 = rand.Next(1, 101);
         var num2 = rand.Next(1, 101);
@@ -141,20 +130,7 @@ void Game(Func<int, int, int> operation, string opSign, int repitition)
         Console.Clear();
     }
 
-    //Console.WriteLine("Here are the questions you answered correctly:");
-    //foreach (string qn in correctQuestions)
-    //{
-    //    Console.WriteLine(qn);
-    //}
-    //Console.WriteLine();
-
-    //Console.WriteLine("Here are the questions you answered incorrectly:");
-    //foreach (string qn in wrongQuestions)
-    //{
-    //    Console.WriteLine(qn);
-    //}
-    //Console.WriteLine();
-    printQuestionHistory();
+    PrintQuestionHistory();
 
     sw.Stop();
     Console.WriteLine($"You took {sw.Elapsed.TotalMinutes} minutes to finish the game");
@@ -171,7 +147,7 @@ int Multiplication(int num1, int num2) => num1 * num2;
 
 int Division(int num1, int num2) => num1 / num2;
 
-void printQuestionHistory()
+void PrintQuestionHistory()
 {
     Console.WriteLine("Here are the questions you answered correctly:");
     foreach (string qn in correctQuestions)
